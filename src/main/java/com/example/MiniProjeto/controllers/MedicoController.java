@@ -2,10 +2,8 @@ package com.example.MiniProjeto.controllers;
 
 import com.example.MiniProjeto.dtos.MedicoRequest;
 import com.example.MiniProjeto.services.MedicoService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.websocket.server.PathParam;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/medico")
@@ -20,5 +18,10 @@ public class MedicoController {
     @PostMapping("/cadastrar")
     public void cadastrarMedico(@RequestBody MedicoRequest medicoRequest){
         medicoService.cadastrarMedico(medicoRequest);
+    }
+
+    @PutMapping("/atualizar/{medicoId}")
+    public void atualizarMedico(@PathVariable Long medicoId, @RequestBody MedicoRequest medicoRequest){
+        medicoService.atualizarMedico(medicoId, medicoRequest);
     }
 }
