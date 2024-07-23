@@ -32,4 +32,9 @@ public class MedicoController {
     public Page<MedicoResponse> listarMedicos(MedicoGetRequest filtros, Pageable paginacao) {
         return medicoService.listarMedicos(filtros, paginacao);
     }
+
+    @GetMapping("/buscar/{medicoId}")
+    public MedicoResponse buscarMedico(@PathVariable Long medicoId) {
+        return medicoService.buscarMedico(medicoId);
+    }
 }

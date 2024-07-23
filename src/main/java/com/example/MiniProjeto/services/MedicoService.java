@@ -66,4 +66,9 @@ public class MedicoService {
             ));
         }
     }
+
+    public MedicoResponse buscarMedico(Long medicoId) {
+        MedicoEntity medicoEntity = medicoRepository.findById(medicoId).orElseThrow(EntityNotFoundException::new);
+        return  map(medicoEntity);
+    }
 }
