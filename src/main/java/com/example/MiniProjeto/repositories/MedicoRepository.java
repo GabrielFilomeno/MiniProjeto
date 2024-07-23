@@ -27,4 +27,6 @@ public interface MedicoRepository extends JpaRepository<MedicoEntity, Long> {
     Page<MedicoEntity> findByNomeContainingIgnoreCase(
             String nome, Pageable paginacao
     );
+
+    Boolean existsByCrm(String crm);
 }
