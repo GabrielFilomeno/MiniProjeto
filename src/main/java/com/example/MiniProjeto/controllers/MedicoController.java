@@ -37,4 +37,9 @@ public class MedicoController {
     public MedicoResponse buscarMedico(@PathVariable Long medicoId) {
         return medicoService.buscarMedico(medicoId);
     }
+
+    @DeleteMapping("/deletar/{medicoId}")
+    public void deletarMedico(@PathVariable Long medicoId) {
+        medicoService.deletarMedico(medicoId);
+    }
 }

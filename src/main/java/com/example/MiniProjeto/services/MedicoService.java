@@ -71,4 +71,12 @@ public class MedicoService {
         MedicoEntity medicoEntity = medicoRepository.findById(medicoId).orElseThrow(EntityNotFoundException::new);
         return  map(medicoEntity);
     }
+
+    public void deletarMedico(Long medicoId) {
+        if(medicoRepository.existsById(medicoId)) {
+            medicoRepository.deleteById(medicoId);
+        } else {
+            throw new EntityNotFoundException();
+        }
+    }
 }
