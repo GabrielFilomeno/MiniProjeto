@@ -1,8 +1,11 @@
 package com.example.MiniProjeto.controllers;
 
+import com.example.MiniProjeto.dtos.MedicoGetRequest;
 import com.example.MiniProjeto.dtos.MedicoRequest;
+import com.example.MiniProjeto.dtos.MedicoResponse;
 import com.example.MiniProjeto.services.MedicoService;
-import jakarta.websocket.server.PathParam;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,5 +26,10 @@ public class MedicoController {
     @PutMapping("/atualizar/{medicoId}")
     public void atualizarMedico(@PathVariable Long medicoId, @RequestBody MedicoRequest medicoRequest){
         medicoService.atualizarMedico(medicoId, medicoRequest);
+    }
+
+    @GetMapping("/listar")
+    public Page<MedicoResponse> listarMedicos(MedicoGetRequest filtros, Pageable paginacao) {
+        return medicoService.listarMedicos(filtros, paginacao);
     }
 }

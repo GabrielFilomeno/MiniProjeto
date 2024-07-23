@@ -1,7 +1,9 @@
 package com.example.MiniProjeto.mappers;
 
 import com.example.MiniProjeto.dtos.MedicoRequest;
+import com.example.MiniProjeto.dtos.MedicoResponse;
 import com.example.MiniProjeto.entities.MedicoEntity;
+import org.springframework.data.domain.Page;
 
 public class MedicoMapper {
 
@@ -17,5 +19,20 @@ public class MedicoMapper {
         target.setEspecialidade(source.getEspecialidade());
 
         return target;
+    }
+
+    public static MedicoResponse map(MedicoEntity source) {
+
+        MedicoResponse target = new MedicoResponse();
+
+        target.setNome(source.getNome());
+        target.setDataNascimento(source.getDataNascimento());
+        target.setEspecialidade(source.getEspecialidade());
+
+        return target;
+    }
+
+    public static Page<MedicoResponse> map(Page<MedicoEntity> source) {
+        return source.map(MedicoMapper::map);
     }
 }
